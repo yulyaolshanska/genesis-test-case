@@ -4,7 +4,6 @@ import { ThemeProvider } from "styled-components";
 import theme from "styles/theme";
 
 const Layout = lazy(() => import("./Layout/Layout"));
-
 const NotFoundPage = lazy(() => import("../pages/notFoundPage/NotFoundPage"));
 const CourseDetailsPage = lazy(
   () => import("../pages/courseDetailsPage/CourseDetailsPage")

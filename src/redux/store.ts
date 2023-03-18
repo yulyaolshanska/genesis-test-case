@@ -16,7 +16,6 @@ export const store = configureStore({
   reducer: {
     [coursesApi.reducerPath]: coursesApi.reducer,
     [authApi.reducerPath]: authApi.reducer,
-
     auth: persistedReducer,
   },
   middleware: (getDefaultMiddleware) => [
