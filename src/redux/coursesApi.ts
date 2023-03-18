@@ -21,7 +21,6 @@ type CoursesResponse = ICourse;
 const baseQuery = fetchBaseQuery({
   baseUrl:
     "https://api.wisey.app/api/v1/core/preview-courses?perPage=10&page=2",
-  mode: "cors",
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;
     if (token) {

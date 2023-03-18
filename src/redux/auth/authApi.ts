@@ -9,7 +9,11 @@ const BASE_URL = "https://api.wisey.app/api/v1";
 export const authApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: `${BASE_URL}/auth/anonymous?platform=subscriptions`,
-    mode: "cors",
+    prepareHeaders: (headers) => {
+      headers.set("Access-Control-Allow-Origin", "*");
+      headers.set("Access-Control-Request-Headers", "authorization");
+      return headers;
+    },
   }),
   reducerPath: "authApi",
   tagTypes: ["Auth"],
