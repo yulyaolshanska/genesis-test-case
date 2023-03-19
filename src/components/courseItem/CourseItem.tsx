@@ -1,11 +1,14 @@
 import React from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import {
   Card,
   CourseImg,
   CourseTitle,
+  DetailsBox,
   LessonsCount,
   Rating,
   Skills,
+  TagItem,
 } from "./CourseItem.styled";
 
 interface IMeta {
@@ -14,6 +17,7 @@ interface IMeta {
 }
 
 interface ICourse {
+  id: string;
   description: string;
   lessonsCount: number;
   rating: number;
@@ -24,6 +28,7 @@ interface ICourse {
 }
 
 export const CourseItem: React.FC<ICourse> = ({
+  id,
   description,
   lessonsCount,
   rating,
@@ -33,14 +38,21 @@ export const CourseItem: React.FC<ICourse> = ({
   image,
 }) => {
   const skills = meta?.skills?.join(", ") ?? "";
+  const location = useLocation();
 
   return (
     <Card>
-      <CourseTitle>{title}</CourseTitle>
-      <CourseImg src={image + "/cover.webp"} />
-      <LessonsCount>Lessons: {lessonsCount}</LessonsCount>
-      <Rating>Rating: {rating}</Rating>
-      {skills !== "" ?? <Skills>Skills: {skills}</Skills>}
+      <NavLink to={`/${id}`} state={{ from: location }}>
+        <CourseImg src={image + "/cover.webp"} />
+        <DetailsBox>
+          <CourseTitle>{title}</CourseTitle>
+          <LessonsCount>Lessons: {lessonsCount}</LessonsCount>
+          <Rating>Rating: {rating}</Rating>
+          {skills !== "" ?? <Skills>Skills: {skills}</Skills>}
+
+          <TagItem key={id}>#{tags}</TagItem>
+        </DetailsBox>
+      </NavLink>
     </Card>
   );
 };
