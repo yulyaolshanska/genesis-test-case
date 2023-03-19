@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/201.c101b466.chunk.js","mappings":"uJAMA,UAJoC,WAClC,OAAO,oCACR,C","sources":["pages/courseDetailsPage/CourseDetailsPage.tsx"],"sourcesContent":["import React from \"react\";\n\nconst CourseDetailsPage: React.FC = () => {\n  return <div>Details</div>;\n};\n\nexport default CourseDetailsPage;\n"],"names":[],"sourceRoot":""}
