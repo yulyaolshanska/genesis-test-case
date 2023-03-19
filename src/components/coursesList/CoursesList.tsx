@@ -1,6 +1,7 @@
 import { CourseItem } from "components/courseItem/CourseItem";
 import React, { useEffect, useState } from "react";
 import {
+  Container,
   CourseList,
   PaginationButton,
   PaginationButtonContainer,
@@ -49,7 +50,7 @@ export const CoursesList: React.FC<IProps> = ({ isLoading, courses }) => {
   };
 
   return (
-    <>
+    <Container>
       <CourseList>
         {currentCourses.map(
           ({
@@ -65,6 +66,7 @@ export const CoursesList: React.FC<IProps> = ({ isLoading, courses }) => {
             return (
               <CourseItem
                 key={id}
+                id={id}
                 description={description}
                 lessonsCount={lessonsCount}
                 rating={rating}
@@ -95,6 +97,6 @@ export const CoursesList: React.FC<IProps> = ({ isLoading, courses }) => {
           </PaginationButton>
         </PaginationButtonContainer>
       )}
-    </>
+    </Container>
   );
 };

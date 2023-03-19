@@ -1,6 +1,34 @@
 import styled from "styled-components";
 
-export const CourseList = styled.ul``;
+export const Container = styled.div`
+  padding: 40px 20px;
+  margin-left: auto;
+  margin-right: auto;
+  @media ${(p) => p.theme.media.tablet} {
+    width: 768px;
+  }
+  @media ${(p) => p.theme.media.desktop} {
+    width: 1280px;
+  }
+`;
+
+export const CourseList = styled.ul`
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 32px;
+  @media ${(p) => p.theme.media.tablet} {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: unset;
+    gap: 24px;
+  }
+`;
 
 export const StyledButton = styled.button<{ active: boolean }>`
   display: inline-flex;

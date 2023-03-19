@@ -22,7 +22,6 @@ const CoursesPage: React.FC = () => {
 
   return (
     <div>
-      All courses
       <CoursesList isLoading={isLoading} courses={courses} />
     </div>
   );
