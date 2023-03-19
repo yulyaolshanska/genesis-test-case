@@ -2,25 +2,30 @@ import { createApi } from "@reduxjs/toolkit/query/react";
 import { fetchBaseQuery } from "@reduxjs/toolkit/query";
 import type { RootState } from "./store";
 
-// export interface ICoursefffff {
-//   id: string;
-//   courses: [];
-//   description: string;
-//   lessonsCount: number;
-//   rating: number;
-//   title: string;
-//   tags: [];
-//   meta: object;
-//   previewImageLink: string;
-// }
+interface ILesson {
+  id: string;
+  previewImageLink: string;
+  link: string;
+  status: string;
+  title: string;
+  order: number;
+}
 interface ICourse {
   courses: [];
 }
 type CoursesResponse = ICourse;
+interface ICourseDetail {
+  title: string;
+  containsLockedLessons: boolean;
+  description: string;
+  lessons: ILesson[];
+  meta: object;
+  rating: number;
+}
+type CourseResponse = ICourseDetail;
 
 const baseQuery = fetchBaseQuery({
-  baseUrl:
-    "https://api.wisey.app/api/v1/core/preview-courses?perPage=10&page=2",
+  baseUrl: "https://api.wisey.app/api/v1/core/preview-courses",
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;
     if (token) {
@@ -41,7 +46,10 @@ export const coursesApi = createApi({
       query: () => "",
       providesTags: ["Courses"],
     }),
+    getCourseById: builder.query<CourseResponse, string>({
+      query: (id) => `/${id}`,
+    }),
   }),
 });
 
-export const { useGetCoursesQuery } = coursesApi;
+export const { useGetCoursesQuery, useGetCourseByIdQuery } = coursesApi;
