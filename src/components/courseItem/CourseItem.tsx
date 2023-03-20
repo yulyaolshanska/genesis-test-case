@@ -1,13 +1,13 @@
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import {
+  Box,
   Card,
   CourseImg,
   CourseTitle,
   DetailsBox,
   LessonsCount,
   Rating,
-  Skills,
   TagItem,
 } from "./CourseItem.styled";
 
@@ -37,18 +37,21 @@ export const CourseItem: React.FC<ICourse> = ({
   meta,
   image,
 }) => {
-  const skills = meta?.skills?.join(", ") ?? "";
+  const skills = meta?.skills?.slice(0, 3).join(", ") ?? "";
   const location = useLocation();
-
+  console.log("skills", skills);
   return (
     <Card>
       <NavLink to={`/${id}`} state={{ from: location }}>
         <CourseImg src={image + "/cover.webp"} />
         <DetailsBox>
           <CourseTitle>{title}</CourseTitle>
-          <LessonsCount>Lessons: {lessonsCount}</LessonsCount>
-          <Rating>Rating: {rating}</Rating>
-          {skills !== "" ?? <Skills>Skills: {skills}</Skills>}
+          <Box>
+            <LessonsCount>Lessons: {lessonsCount}</LessonsCount>
+            <Rating>Rating: {rating}</Rating>
+          </Box>
+
+          {/* {skills ?? <Skills>Skills: {skills}</Skills>} */}
 
           <TagItem key={id}>#{tags}</TagItem>
         </DetailsBox>

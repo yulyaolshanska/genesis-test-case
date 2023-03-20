@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  position: relative;
   padding: 40px 20px;
   margin-left: auto;
   margin-right: auto;
@@ -9,6 +10,16 @@ export const Container = styled.div`
   }
   @media ${(p) => p.theme.media.desktop} {
     width: 1280px;
+  }
+`;
+
+export const Title = styled.h1`
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 32px;
+  text-align: center;
+  @media ${(p) => p.theme.media.tablet} {
+    margin-bottom: 30px;
   }
 `;
 
@@ -43,16 +54,16 @@ export const StyledButton = styled.button<{ active: boolean }>`
     p.active ? p.theme.colors.accent : p.theme.colors.white};
   color: ${(p) =>
     p.active ? p.theme.colors.secondatyBtnText : p.theme.colors.accent};
-  cursor: pointer;
 
   :hover:not(:disabled),
   :focus:not(:disabled) {
     background-color: ${(p) =>
-      p.active ? p.theme.colors.hoverBtn : p.theme.colors.white};
+      p.active ? p.theme.colors.accent : p.theme.colors.white};
     border-color: ${(p) => p.theme.colors.hoverBtn};
     color: ${(p) =>
-      p.active ? p.theme.colors.secondatyBtnText : p.theme.colors.hoverBtn};
+      p.active ? p.theme.colors.secondatyBtnText : p.theme.colors.accent};
     outline: none;
+    cursor: ${(p) => (p.active ? "pointer" : "none")};
   }
 `;
 
@@ -63,6 +74,10 @@ export const PaginationButtonContainer = styled.div`
 `;
 export const PaginationButton = styled(StyledButton)`
   border-radius: 20%;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    transform: ${(p) => (p.active ? "scale(1.1)" : "scale(1.0)")};
+  }
   :not(:last-child) {
     margin-right: 10px;
   }

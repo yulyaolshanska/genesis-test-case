@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { useGetCourseByIdQuery } from "redux/coursesApi";
 import {
+  ArrowIcon,
+  BackLink,
   CourseDescription,
   CourseLessonsList,
   CourseTitle,
+  LockIcon,
   Title,
+  TitleBox,
   VideoContainer,
 } from "./CourseDetailsPage.styled";
 import VideoPlayer from "components/VideoPlayer/VideoPlayer";
@@ -31,6 +35,8 @@ const CourseDetailsPage: React.FC = () => {
     null
   );
   const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? "/";
 
   useEffect(() => {
     if (course && course.lessons && course.lessons.length > 0) {
@@ -46,11 +52,26 @@ const CourseDetailsPage: React.FC = () => {
   };
 
   return (
-    <Container>
-      <CourseTitle>{course?.title}</CourseTitle>
-      <CourseDescription>{course?.description}</CourseDescription>
-      <VideoContainer>
-        {isVideoOpen && currentLesson && (
+    <>
+      <Container>
+        <BackLink to={backLinkHref}>
+          <ArrowIcon />
+          Go Back
+        </BackLink>
+        <CourseTitle>{course?.title}</CourseTitle>
+        <CourseDescription>{course?.description}</CourseDescription>
+        <VideoContainer>
+          {isVideoOpen && currentLesson && (
+            <VideoPlayer
+              id={currentLesson.id}
+              videoLink={currentLesson.link}
+              order={currentLesson.order}
+              previewImageLink={currentLesson.previewImageLink}
+            />
+          )}
+        </VideoContainer>
+
+        {!isVideoOpen && currentLesson && (
           <VideoPlayer
             id={currentLesson.id}
             videoLink={currentLesson.link}
@@ -58,30 +79,24 @@ const CourseDetailsPage: React.FC = () => {
             previewImageLink={currentLesson.previewImageLink}
           />
         )}
-      </VideoContainer>
-
-      {!isVideoOpen && currentLesson && (
-        <VideoPlayer
-          id={currentLesson.id}
-          videoLink={currentLesson.link}
-          order={currentLesson.order}
-          previewImageLink={currentLesson.previewImageLink}
-        />
-      )}
-      <Title>Lessons:</Title>
-      <CourseLessonsList>
-        {course?.lessons.map((lesson: LessonseDetails) => (
-          <CourseLesson
-            onClick={() => handleLessonClick(lesson)}
-            key={lesson.id}
-            id={lesson.id}
-            title={lesson.title}
-          >
-            <LessonTitle>{lesson.title}</LessonTitle>
-          </CourseLesson>
-        ))}
-      </CourseLessonsList>
-    </Container>
+        <Title>Lessons:</Title>
+        <CourseLessonsList>
+          {course?.lessons.map((lesson: LessonseDetails) => (
+            <CourseLesson
+              onClick={() => handleLessonClick(lesson)}
+              key={lesson.id}
+              id={lesson.id}
+              title={lesson.title}
+            >
+              <TitleBox>
+                <LessonTitle>{lesson.title}</LessonTitle>
+                {lesson.status === "locked" && <LockIcon />}
+              </TitleBox>
+            </CourseLesson>
+          ))}
+        </CourseLessonsList>
+      </Container>
+    </>
   );
 };
 export default CourseDetailsPage;

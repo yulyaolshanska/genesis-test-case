@@ -26,6 +26,15 @@ export const DetailsBox = styled.div`
 `;
 export const CourseTitle = styled.h2`
   font-size: 18px;
+  margin-bottom: 14px;
+  @media ${(p) => p.theme.media.tablet} {
+    margin-bottom: 16px;
+  }
+`;
+export const Box = styled.div`
+  display: flex;
+  margin-bottom: 14px;
+  justify-content: space-between;
 `;
 
 export const CourseImg = styled.img`
@@ -45,12 +54,13 @@ export const LessonsCount = styled.p``;
 
 export const Rating = styled.p``;
 export const Skills = styled.p`
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   gap: 4px;
   padding-left: 24px;
-  list-style: decimal-leading-zero;
+  list-style: decimal-leading-zero; */
 `;
+
 export const Progress = styled.p`
   font-size: 12px;
   line-height: calc(20 / 12);

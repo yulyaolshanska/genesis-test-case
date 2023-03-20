@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "styles/globalStyle";
 import theme from "styles/theme";
+import Loader from "./Loader/Loader";
 
 const NotFoundPage = lazy(() => import("../pages/notFoundPage/NotFoundPage"));
 const CourseDetailsPage = lazy(
@@ -14,7 +15,7 @@ export const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Suspense fallback={<div>...</div>}>
+      <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<CoursesPage />} />
           <Route path="/:id" element={<CourseDetailsPage />}>

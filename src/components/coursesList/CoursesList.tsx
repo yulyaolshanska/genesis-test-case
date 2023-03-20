@@ -1,10 +1,12 @@
 import { CourseItem } from "components/courseItem/CourseItem";
+import Loader from "components/Loader/Loader";
 import React, { useEffect, useState } from "react";
 import {
   Container,
   CourseList,
   PaginationButton,
   PaginationButtonContainer,
+  Title,
 } from "./CoursesList.styled";
 
 type IProps = {
@@ -51,19 +53,20 @@ export const CoursesList: React.FC<IProps> = ({ isLoading, courses }) => {
 
   return (
     <Container>
+      <Title>Our Courses</Title>
       <CourseList>
-        {currentCourses.map(
-          ({
-            id,
-            lessonsCount,
-            rating,
-            title,
-            tags,
-            meta,
-            previewImageLink,
-            description,
-          }) => {
-            return (
+        {!isLoading ? (
+          currentCourses.map(
+            ({
+              id,
+              lessonsCount,
+              rating,
+              title,
+              tags,
+              meta,
+              previewImageLink,
+              description,
+            }) => (
               <CourseItem
                 key={id}
                 id={id}
@@ -75,8 +78,10 @@ export const CoursesList: React.FC<IProps> = ({ isLoading, courses }) => {
                 meta={meta}
                 image={previewImageLink}
               />
-            );
-          }
+            )
+          )
+        ) : (
+          <Loader />
         )}
       </CourseList>
       {!isLoading && currentCourses?.length !== 0 && (

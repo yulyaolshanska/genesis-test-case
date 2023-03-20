@@ -6,6 +6,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   html {
     scroll-behavior: smooth;
+    box-sizing: border-box;
   }
  */
   img {
@@ -19,7 +20,7 @@ export const GlobalStyle = createGlobalStyle`
     list-style: none;
   }
   
-  /* h1,
+  h1,
   h2,
   h3,
   h4,
@@ -27,7 +28,7 @@ export const GlobalStyle = createGlobalStyle`
   h6,
   p {
     margin: 0;
-  } */
+  }
   a {
     text-decoration: none;
     color: inherit;
