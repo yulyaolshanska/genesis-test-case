@@ -8,12 +8,15 @@ import {
   DetailsBox,
   LessonsCount,
   Rating,
+  SkillItem,
+  Skills,
+  SkillsList,
   TagItem,
 } from "./CourseItem.styled";
 
 interface IMeta {
   courseVideoPreview: object;
-  skills?: [];
+  skills?: string[];
 }
 
 interface ICourse {
@@ -29,7 +32,6 @@ interface ICourse {
 
 export const CourseItem: React.FC<ICourse> = ({
   id,
-  description,
   lessonsCount,
   rating,
   title,
@@ -37,9 +39,9 @@ export const CourseItem: React.FC<ICourse> = ({
   meta,
   image,
 }) => {
-  const skills = meta?.skills?.slice(0, 3).join(", ") ?? "";
+  const skills = meta?.skills?.slice(0, 3) ?? [];
   const location = useLocation();
-  console.log("skills", skills);
+
   return (
     <Card>
       <NavLink to={`/${id}`} state={{ from: location }}>
@@ -50,9 +52,13 @@ export const CourseItem: React.FC<ICourse> = ({
             <LessonsCount>Lessons: {lessonsCount}</LessonsCount>
             <Rating>Rating: {rating}</Rating>
           </Box>
-
-          {/* {skills ?? <Skills>Skills: {skills}</Skills>} */}
-
+          {skills.length > 0 && <Skills>Skills:</Skills>}
+          <SkillsList>
+            {skills.length > 0 &&
+              skills.map((skill: string) => (
+                <SkillItem key={skill}> {skill}</SkillItem>
+              ))}
+          </SkillsList>
           <TagItem key={id}>#{tags}</TagItem>
         </DetailsBox>
       </NavLink>
