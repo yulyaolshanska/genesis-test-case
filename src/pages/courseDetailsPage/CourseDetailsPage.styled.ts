@@ -13,35 +13,39 @@ export const ArrowIcon = styled(MdArrowBackIos)`
 `;
 
 export const VideoContainer = styled.div`
+  position: relative;
   margin-left: auto;
   margin-right: auto;
 `;
+
 export const CourseTitle = styled.h1`
+  margin-bottom: 20px;
   font-weight: 700;
   font-size: 32px;
   text-align: center;
-  margin-bottom: 20px;
 `;
+
 export const Title = styled.p`
+  margin-bottom: 15px;
   font-weight: 700;
   font-size: 32px;
-  margin-bottom: 15px;
 `;
+
 export const CourseDescription = styled.p`
+  margin-bottom: 16px;
   text-align: center;
   font-size: 18px;
-  margin-bottom: 16px;
   @media ${(p) => p.theme.media.tablet} {
     margin-bottom: 20px;
   }
 `;
+
 export const CourseLessonsList = styled.ol``;
 
 export const BackLink = styled(NavLink)`
   position: absolute;
   top: 20px;
   left: -30px;
-  /* width: 200px; */
   z-index: 10;
   padding: 10px 15px;
   transform: translateX(50%);
@@ -50,7 +54,6 @@ export const BackLink = styled(NavLink)`
   align-items: center;
   font-weight: 700;
   color: ${(p) => p.theme.colors.accent};
-
   border-radius: 20px;
   background-color: rgb(246, 247, 247);
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -64,7 +67,20 @@ export const BackLink = styled(NavLink)`
 `;
 
 export const LockIcon = styled(FaLock)``;
+
 export const TitleBox = styled.div`
   display: flex;
   align-items: center;
+`;
+
+export const LessonTitle = styled.h2`
+  margin-right: 10px;
+  font-weight: 500;
+`;
+export const LessonLink = styled.a``;
+export const CourseLesson = styled.li`
+  &:not(:last-child) {
+    margin-bottom: 12px;
+  }
+  cursor: pointer;
 `;
