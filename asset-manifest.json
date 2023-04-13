@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/genesis-test-case/static/css/main.e6c13ad2.css",
-    "main.js": "/genesis-test-case/static/js/main.1e086b49.js",
+    "main.js": "/genesis-test-case/static/js/main.a0b557ad.js",
     "static/js/692.aabcc8d6.chunk.js": "/genesis-test-case/static/js/692.aabcc8d6.chunk.js",
-    "static/js/502.0b1a3c43.chunk.js": "/genesis-test-case/static/js/502.0b1a3c43.chunk.js",
+    "static/js/502.50077ac9.chunk.js": "/genesis-test-case/static/js/502.50077ac9.chunk.js",
     "static/js/871.4bb3890c.chunk.js": "/genesis-test-case/static/js/871.4bb3890c.chunk.js",
     "static/js/738.9b5bec8f.chunk.js": "/genesis-test-case/static/js/738.9b5bec8f.chunk.js",
     "index.html": "/genesis-test-case/index.html",
     "main.e6c13ad2.css.map": "/genesis-test-case/static/css/main.e6c13ad2.css.map",
-    "main.1e086b49.js.map": "/genesis-test-case/static/js/main.1e086b49.js.map",
+    "main.a0b557ad.js.map": "/genesis-test-case/static/js/main.a0b557ad.js.map",
     "692.aabcc8d6.chunk.js.map": "/genesis-test-case/static/js/692.aabcc8d6.chunk.js.map",
-    "502.0b1a3c43.chunk.js.map": "/genesis-test-case/static/js/502.0b1a3c43.chunk.js.map",
+    "502.50077ac9.chunk.js.map": "/genesis-test-case/static/js/502.50077ac9.chunk.js.map",
     "871.4bb3890c.chunk.js.map": "/genesis-test-case/static/js/871.4bb3890c.chunk.js.map",
     "738.9b5bec8f.chunk.js.map": "/genesis-test-case/static/js/738.9b5bec8f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.1e086b49.js"
+    "static/js/main.a0b557ad.js"
   ]
 }
