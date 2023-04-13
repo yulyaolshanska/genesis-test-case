@@ -1,11 +1,13 @@
 import React, { useRef, useEffect, useState } from "react";
 import Hls from "hls.js";
+import LockedVideoImg from "../../images/lockedVideo.png";
 
 interface VideoPlayerProps {
   videoLink: string;
   previewImageLink: string;
   order: number;
   id: string;
+  status: string;
 }
 
 const VideoPlayer: React.FC<VideoPlayerProps> = ({
@@ -13,9 +15,11 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   previewImageLink,
   order,
   id: videoId,
+  status,
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [currentVideoTime, setCurrentVideoTime] = useState<number>(0);
+  const poster = `${previewImageLink}/lesson-${order}.webp`;
 
   useEffect(() => {
     const videoElement = videoRef.current;
@@ -44,7 +48,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
       setCurrentVideoTime(currentTime);
     }
   };
-  const poster = `${previewImageLink}/lesson-${order}.webp`;
 
   return (
     <video
@@ -52,7 +55,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
       ref={videoRef}
       controls
       onTimeUpdate={handleTimeUpdate}
-      poster={poster}
+      poster={status === "unlocked" ? poster : LockedVideoImg}
     />
   );
 };
