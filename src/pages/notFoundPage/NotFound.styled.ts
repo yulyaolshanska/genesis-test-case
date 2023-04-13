@@ -41,13 +41,6 @@ export const Text = styled.h2`
 export const ErrorBox = styled.div`
   display: flex;
   align-items: center;
-
-  @media ${(p) => p.theme.media.mobile} {
-  }
-  @media ${(p) => p.theme.media.tablet} {
-  }
-  @media ${(p) => p.theme.media.desktop} {
-  }
 `;
 export const HomeLink = styled(Link)`
   color: #ffffff;

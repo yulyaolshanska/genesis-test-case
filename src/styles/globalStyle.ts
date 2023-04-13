@@ -1,19 +1,22 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
-* {
-  box-sizing: border-box;
-  }
+ 
   html {
     scroll-behavior: smooth;
     box-sizing: border-box;
   }
- */
+ 
   img {
     display: block;
     max-width: 100%;
     height: auto;
   }
+
+  button {
+    cursor: pointer;
+  }
+
   ul {
     padding: 0;
     margin: 0;
