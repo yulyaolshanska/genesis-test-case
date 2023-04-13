@@ -13,9 +13,7 @@ export const GlobalStyle = createGlobalStyle`
     height: auto;
   }
 
-  button {
-    cursor: pointer;
-  }
+  
 
   ul {
     padding: 0;
