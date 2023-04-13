@@ -14,11 +14,10 @@ const CoursesPage: React.FC = () => {
 
   useEffect(() => {
     if (data?.token) {
+      dispatch(setToken(data?.token));
       getCourses("");
     }
   }, [data, getCourses]);
-
-  dispatch(setToken(data?.token));
 
   return (
     <div>
