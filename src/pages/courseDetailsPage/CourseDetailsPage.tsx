@@ -13,6 +13,9 @@ import {
   Title,
   TitleBox,
   VideoContainer,
+  CurrentLesson,
+  CurrentLessContainer,
+  CurrentText,
 } from "./CourseDetailsPage.styled";
 import { Container } from "components/coursesList/CoursesList.styled";
 import VideoPlayer from "components/VideoPlayer/VideoPlayer";
@@ -72,7 +75,16 @@ const CourseDetailsPage: React.FC = () => {
             />
           )}
         </VideoContainer>
-
+        {currentLesson && (
+          <CurrentLessContainer>
+            <CurrentLesson>
+              Current Lesson: <CurrentText>{currentLesson.title}</CurrentText>
+            </CurrentLesson>
+            <CurrentLesson>
+              Status: <CurrentText>{currentLesson.status}</CurrentText>
+            </CurrentLesson>
+          </CurrentLessContainer>
+        )}
         <Title>Lessons:</Title>
         <CourseLessonsList>
           {course?.lessons.map((lesson: LessonseDetails) => (
@@ -80,10 +92,11 @@ const CourseDetailsPage: React.FC = () => {
               onClick={() => handleLessonClick(lesson)}
               key={lesson.id}
               id={lesson.id}
-              title={lesson.title}
             >
               <TitleBox>
-                <LessonTitle>{lesson.title}.</LessonTitle>
+                <LessonTitle active={currentLesson?.id === lesson.id}>
+                  {lesson.title}.
+                </LessonTitle>
                 {lesson.status === "locked" && <LockIcon />}
               </TitleBox>
             </CourseLesson>
